@@ -15,7 +15,15 @@ class CreateTableStore extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->string('name');
+            $table->string('description');
+            $table->string('phone');
+            $table->string('mobile_phone');
+            $table->string('slug');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
